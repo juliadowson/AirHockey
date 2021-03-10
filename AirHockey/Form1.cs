@@ -30,7 +30,7 @@ namespace AirHockey
         int ballY = 195;
         int ballXSpeed = 5;
         int ballYSpeed = 5;
-        int ballWidth = 10;
+        int ballWidth = 10; 
         int ballHeight = 10;
 
         bool wDown = false;
