@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Julia Dowson 
+ * Mr. T
+ * March 11, 2021
+ * This is a basic Air Hockey game.
+ * */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Threading;
 
 namespace AirHockey
 {
@@ -54,6 +62,7 @@ namespace AirHockey
             InitializeComponent();
         }
 
+        //draws all shapes on screen
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawLine(drawPen, this.Width / 2 + 1, 0, this.Width / 2 + 1, this.Height);
@@ -139,7 +148,7 @@ namespace AirHockey
 
             #region player move controls
 
-            //move player 1 
+            //moves player 1 
 
             if (wDown == true && paddle1Y > 0)
             {
@@ -162,7 +171,7 @@ namespace AirHockey
             }
 
 
-            //move player 2 
+            //moves player 2 
             if (upArrowDown == true && paddle2Y > 0)
             {
                 paddle2Y -= paddleSpeed;
@@ -192,12 +201,14 @@ namespace AirHockey
             {
                 ballXSpeed *= -1;
             }
+            //creates the intersection rectangles
             Rectangle player1Rec = new Rectangle(paddle1X, paddle1Y, paddleWidth, paddleHeight);
             Rectangle player2Rec = new Rectangle(paddle2X, paddle2Y, paddleWidth, paddleHeight);
             Rectangle player1Net = new Rectangle(1, 140, 1, 145);
             Rectangle player2Net = new Rectangle(621, 140, 621, 145);
             Rectangle ballRec = new Rectangle(ballX, ballY, ballWidth, ballHeight);
 
+            //what happens if the ball hits player 1
             if (player1Rec.IntersectsWith(ballRec))
             {
 
@@ -212,6 +223,7 @@ namespace AirHockey
                     ballX = paddle1X + paddleWidth + 1;
                 }
             }
+            //what happens if the ball hits player 1
             else if (player2Rec.IntersectsWith(ballRec))
             {
 
@@ -228,6 +240,7 @@ namespace AirHockey
 
             }
 
+            //what happens if the ball hits player 1's net
             if (player1Net.IntersectsWith(ballRec))
             {
                 goal.Play();
@@ -248,6 +261,7 @@ namespace AirHockey
                 ballHeight = 10;
 
             }
+            //what happens if the ball hits player 2's net
             if (player2Net.IntersectsWith(ballRec))
             {
                 goal.Play();
@@ -268,18 +282,22 @@ namespace AirHockey
                 ballHeight = 10;
 
             }
+            //adds players score
             if (player1Score == 3)
             {
                 gameTimer.Enabled = false;
                 winnerLabel.Text = "Player 1 Wins!";
+              
             }
             else if (player2Score == 3)
             {
                 gameTimer.Enabled = false;
                 winner2Label.Text = "Player 2 Wins!";
+                
             }
 
             Refresh();
+
         }
     }
 }
