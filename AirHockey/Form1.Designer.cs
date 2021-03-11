@@ -81,7 +81,7 @@ namespace AirHockey
             this.winner2Label.BackColor = System.Drawing.Color.Transparent;
             this.winner2Label.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.winner2Label.ForeColor = System.Drawing.Color.White;
-            this.winner2Label.Location = new System.Drawing.Point(520, 157);
+            this.winner2Label.Location = new System.Drawing.Point(520, 130);
             this.winner2Label.Name = "winner2Label";
             this.winner2Label.Size = new System.Drawing.Size(223, 70);
             this.winner2Label.TabIndex = 3;

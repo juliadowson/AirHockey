@@ -30,7 +30,7 @@ namespace AirHockey
         int ballY = 195;
         int ballXSpeed = 5;
         int ballYSpeed = 5;
-        int ballWidth = 10; 
+        int ballWidth = 10;
         int ballHeight = 10;
 
         bool wDown = false;
@@ -59,8 +59,8 @@ namespace AirHockey
             e.Graphics.FillRectangle(whiteBrush, ballX, ballY, ballWidth, ballHeight);
             e.Graphics.FillRectangle(blueBrush, paddle1X, paddle1Y, paddleWidth, paddleHeight);
             e.Graphics.FillRectangle(blueBrush, paddle2X, paddle2Y, paddleWidth, paddleHeight);
-            e.Graphics.DrawLine(drawPen, 1, 140, 1, 220);
-            e.Graphics.DrawLine(drawPen, 621, 140, 621, 220);
+            e.Graphics.DrawLine(drawPen, 1, 140, 1, 230);
+            e.Graphics.DrawLine(drawPen, 621, 140, 621, 230);
 
         }
 
@@ -131,7 +131,6 @@ namespace AirHockey
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-
             ballX += ballXSpeed;
             ballY += ballYSpeed;
 
@@ -180,7 +179,8 @@ namespace AirHockey
             {
                 paddle2X += paddleSpeed;
             }
-            #endregion 
+            #endregion
+
             if (ballY < 0 || ballY > this.Height - ballHeight)
             {
                 ballYSpeed *= -1;
@@ -189,15 +189,15 @@ namespace AirHockey
             {
                 ballXSpeed *= -1;
             }
-
             Rectangle player1Rec = new Rectangle(paddle1X, paddle1Y, paddleWidth, paddleHeight);
             Rectangle player2Rec = new Rectangle(paddle2X, paddle2Y, paddleWidth, paddleHeight);
-            Rectangle player1Net = new Rectangle(1, 140, 1, 150);
-            Rectangle player2Net = new Rectangle(621, 140, 621, 150);
+            Rectangle player1Net = new Rectangle(1, 140, 1, 145);
+            Rectangle player2Net = new Rectangle(621, 140, 621, 145);
             Rectangle ballRec = new Rectangle(ballX, ballY, ballWidth, ballHeight);
 
             if (player1Rec.IntersectsWith(ballRec))
             {
+
                 pop.Play();
                 ballXSpeed *= -1;
                 if (ballX <= paddle1X)
@@ -211,6 +211,7 @@ namespace AirHockey
             }
             else if (player2Rec.IntersectsWith(ballRec))
             {
+
                 pop.Play();
                 ballXSpeed *= -1;
                 if (ballX <= paddle2X)
