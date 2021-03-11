@@ -43,6 +43,7 @@ namespace AirHockey
         bool rightArrowDown = false;
 
         Pen drawPen = new Pen(Color.White, 6);
+        Pen drawRed = new Pen(Color.Red, 5);
         SolidBrush blueBrush = new SolidBrush(Color.DodgerBlue);
         SolidBrush whiteBrush = new SolidBrush(Color.White);
         SoundPlayer pop = new SoundPlayer(Properties.Resources.pop);
@@ -56,6 +57,8 @@ namespace AirHockey
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawLine(drawPen, this.Width / 2 + 1, 0, this.Width / 2 + 1, this.Height);
+            e.Graphics.DrawEllipse(drawRed, -37, 110, 95, 150);
+            e.Graphics.DrawEllipse(drawRed, 570, 110, 95, 150);
             e.Graphics.FillRectangle(whiteBrush, ballX, ballY, ballWidth, ballHeight);
             e.Graphics.FillRectangle(blueBrush, paddle1X, paddle1Y, paddleWidth, paddleHeight);
             e.Graphics.FillRectangle(blueBrush, paddle2X, paddle2Y, paddleWidth, paddleHeight);
