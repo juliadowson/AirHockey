@@ -223,7 +223,7 @@ namespace AirHockey
                     ballX = paddle1X + paddleWidth + 1;
                 }
             }
-            //what happens if the ball hits player 1
+            //what happens if the ball hits player 2
             else if (player2Rec.IntersectsWith(ballRec))
             {
 
